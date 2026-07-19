@@ -1,0 +1,39 @@
+<div th:fragment="cartOffcanvas">
+
+  <div class="offcanvas offcanvas-end cart-panel" tabindex="-1" id="cartOffcanvas" style="width: 380px;">
+
+    <div class="offcanvas-header cart-header border-bottom">
+      <h5 class="offcanvas-title cart-title">Tu Carrito</h5>
+
+      <button type="button" class="btn-close cart-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+
+    <div class="offcanvas-body p-0 d-flex flex-column flex-grow-1 overflow-auto">
+
+      <div class="cart-empty text-center text-muted p-3" id="cart-empty">
+        Tu carrito está vacío
+      </div>
+
+    </div>
+
+    <div class="cart-footer border-top p-3 mt-auto">
+
+      <div class="cart-total d-flex justify-content-between mb-3">
+        <strong>Total:</strong>
+        <strong id="cart-total">S/ 0.00</strong>
+      </div>
+
+      <button class="btn btn-success w-100 fw-bold mb-2" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+        Finalizar Compra
+      </button>
+
+      <!-- NUEVO BOTÓN -->
+      <button class="btn btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#visitaTecnicaModal">
+        Visita técnica
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animal Feed Solutions</title>
+
+  <link rel="stylesheet" th:href="@{/estilos/navbar.css}">
+  <link rel="stylesheet" th:href="@{/estilos/index.css}">
+  <link rel="stylesheet" th:href="@{/estilos/nosotros.css}">
+  <link rel="stylesheet" th:href="@{/estilos/bot.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+
+</head>
+
+<body>
+
+
+  <div class="container">
+
+
+
+    <!-- NAVBAR -->
+
+    <div th:replace="fragmentos/navbar :: navbar"></div>
+
+    <!-- contenido -->
+
+    <section class="hero">
+
+
+      <div class="hero-content">
+
+        <div class="tag">
+          Nutrición de precisión · Trujillo, Perú
+        </div>
+
+        <h1>
+          Nutrición inteligente para el futuro animal.
+        </h1>
+
+        <p>
+          Alimento balanceado para avícolas, vacuno, acuícolas y mascotas.
+          Seguimiento técnico, calidad certificada y precios al alcance del campo.
+        </p>
+
+        <div class="buttons">
+
+          <!-- From Uiverse.io by Matilemak -->
+          <a th:href="@{/tienda}" class="animated-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
+              <path
+                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
+            </svg>
+
+            <span class="text">Comprar</span>
+            <span class="circle"></span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
+              <path
+                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
+            </svg>
+          </a>
+
+
+          <!-- BOTON BSUQUEDA -->
+          <a class="btn neon-pulse" id="btnBuscar"
+            href="https://wa.me/51967307763?text=Hola%20quiero%20realizar%20un%20PEDIDO" target="_blank">
+            <span> <i class="fa-brands fa-whatsapp"></i> WHATSAPP </span>
+          </a>
+
+
+        </div>
+
+        <div class="stats">
+
+          <div class="stat-card">
+            <h2>+18</h2>
+            <span>años</span>
+          </div>
+
+          <div class="stat-card">
+            <h2>1</h2>
+            <span>granjas</span>
+          </div>
+
+          <div class="stat-card">
+            <h2>98%</h2>
+            <span>satisfacción</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!--  HERO  -->
+      <section class="hero" id="heroSection">
+
+        <div class="hero-image">
+          <div class="image-box">
+
+            <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=1200&auto=format&fit=crop"
+              alt="">
+
+            <video class="hero-video" autoplay muted loop playsinline>
+              <source
+                src="https://raw.githubusercontent.com/davonlzz18/cosas/main/cinematic_sunlit_poultry_farm_chickensmp_.mp4"
+                type="video/mp4">
+            </video>
+
+          </div>
+        </div>
+
+      </section>
+
+
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+    <section class="seccion-nosotros " id="nosotros">
+
+      <!-- Encabezado -->
+      <div class="encabezado-nosotros">
+        <span class="etiqueta-nosotros">Nosotros</span>
+        <h1>Más de 18 años nutriendo el campo peruano</h1>
+      </div>
+
+      <div class="contenido-nosotros">
+
+        <!-- Historia -->
+        <div class="historia">
+          <h2>Nuestra historia</h2>
+          <p>
+            Fundada en Trujillo en 2008, Animal Feed Solutions S.A.C. nació como una pequeña planta de molienda...
+          </p>
+        </div>
+
+        <!-- Tarjetas -->
+        <div class="rejilla-tarjetas">
+
+          <div class="tarjeta">
+            <div class="icono mision">✦</div>
+            <h3>Misión</h3>
+            <p>Brindar alimento balanceado de calidad superior...</p>
+          </div>
+
+          <div class="tarjeta">
+            <div class="icono vision">✦</div>
+            <h3>Visión</h3>
+            <p>Ser la marca líder de nutrición animal en Sudamérica...</p>
+          </div>
+
+          <div class="tarjeta">
+            <div class="icono valores">✦</div>
+            <h3>Valores</h3>
+            <p>Integridad, ciencia, sostenibilidad y compromiso...</p>
+          </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="pie-nosotros">
+
+          <div class="ubicacion">
+            <div class="icono-ubicacion">📍</div>
+            <div>
+              <h4>Dirección</h4>
+              <p>Av. Industrial 1234, Trujillo - La Libertad - Perú</p>
+            </div>
+          </div>
+
+
+
+
+
+    </section>
+
+
+    <section class="btnn">
+      <button type="button" class="boton-ruta" onclick="abrirRuta()">
+        Cómo llegar →
+      </button>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="seccion-catalogo" id="catalogo">
+
+      <div class="encabezado-catalogo">
+        <span class="etiqueta-catalogo">Catálogo</span>
+        <h2>Productos por especie</h2>
+        <p class="subtitulo-catalogo">Selecciona la categoría que necesitas</p>
+      </div>
+
+      <div class="controles-catalogo">
+
+        <div class="pestanas-categorias">
+
+          <button class="boton-pestana activo" data-categoria="avicola">Avícola</button>
+          <button class="boton-pestana" data-categoria="crecimiento">Crecimiento</button>
+          <button class="boton-pestana" data-categoria="engorde">Engorde</button>
+          <button class="boton-pestana" data-categoria="otros">Otros</button>
+
+        </div>
+
+        <div class="cambio-moneda">
+          <button class="boton-moneda activo">S/ Soles</button>
+        </div>
+
+      </div>
+
+      <p class="detalle-categoria" id="detalleCategoria"></p>
+
+      <div class="rejilla-productos" id="rejillaProductos"></div>
+
+    </section>
+
+
+
+
+
+
+
+
+    <section class="seccion-almacenamiento" id="almacenamiento">
+      <div class="encabezado-almacenamiento">
+        <span class="etiqueta-almacenamiento">Manejo correcto</span>
+        <h2>Almacena tu alimento como un profesional</h2>
+        <p class="subtitulo-almacenamiento">
+          Un buen almacenamiento conserva nutrientes, previene hongos y multiplica la rentabilidad de tu granja.
+        </p>
+      </div>
+
+      <div class="rejilla-almacenamiento">
+
+        <div class="tarjeta-almacenamiento">
+          <div class="bloque-icono naranja">☀️</div>
+          <h3>Lejos de la luz</h3>
+          <p>Evita exposición directa al sol; degrada vitaminas A, D y E.</p>
+        </div>
+
+        <div class="tarjeta-almacenamiento">
+          <div class="bloque-icono cian">🌡️</div>
+          <h3>Bajo 22 °C</h3>
+          <p>Temperatura fresca preserva grasas y proteínas.</p>
+        </div>
+
+        <div class="tarjeta-almacenamiento">
+          <div class="bloque-icono verde">💧</div>
+          <h3>Ambiente seco</h3>
+          <p>Humedad &lt; 14% para evitar hongos (aflatoxinas).</p>
+        </div>
+
+        <div class="tarjeta-almacenamiento">
+          <div class="bloque-icono naranja-claro">🪲</div>
+          <h3>Control de plagas</h3>
+          <p>Sacos sobre parihuelas, separados 30cm de la pared.</p>
+        </div>
+
+      </div>
+
+      <div class="banner-fifo">
+        <div class="icono-fifo">📦</div>
+        <div class="texto-fifo">
+          <h3>Rotación FIFO (primero en entrar, primero en salir)</h3>
+          <p>
+            Consume primero los lotes antiguos. Vida útil recomendada:
+            <span class="dias-destacados">60 días</span> desde producción.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+    <section class="seccion-envios" id="envios">
+
+      <div class="contenedor-envios-card">
+
+        <!-- TEXTO PRINCIPAL -->
+        <div class="info-envios">
+
+          <span class="etiqueta-logistica">
+            <span class="icono-etiqueta">🚚</span> Cobertura logística nacional
+          </span>
+
+          <h2>
+            Envíos <span class="texto-gratis-verde">GRATIS</span> en Trujillo y entrega rápida a nivel nacional
+          </h2>
+
+          <p class="parrafo-envios">
+            Distribuimos alimento balanceado para aves directamente desde nuestra planta hacia granjas, negocios y
+            productores.
+            Garantizamos entregas seguras, rápidas y con control de calidad en cada envío.
+          </p>
+
+          <ul class="lista-caracteristicas-envios">
+            <li>✓ Trujillo Metropolitano <strong>GRATIS en 24h</strong></li>
+            <li>• La Libertad (provincias): S/ 25 – S/ 80</li>
+            <li>• Envíos nacionales: cotización personalizada</li>
+            <li>• Seguimiento de pedido en tiempo real</li>
+            <li>• Entrega directa a granjas y almacenes</li>
+          </ul>
+
+          <!-- ESTADÍSTICAS -->
+          <div class="estadisticas-envio">
+
+            <div class="stat">
+              <h3>24h</h3>
+              <p>Entrega local</p>
+            </div>
+
+            <div class="stat">
+              <h3>98%</h3>
+              <p>Entregas a tiempo</p>
+            </div>
+
+            <div class="stat">
+              <h3>+500</h3>
+              <p>Clientes activos</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- IMAGEN PRINCIPAL -->
+        <div class="imagen-envios">
+          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=80"
+            alt="Entrega de alimentos para aves">
+        </div>
+
+      </div>
+
+      <!-- DESTINOS -->
+      <div class="seccion-destinos">
+
+        <h3 class="titulo-destinos">Principales destinos de envío</h3>
+
+        <div class="rejilla-destinos">
+
+          <div class="tarjeta-destino">
+            <div class="icono-circulo verde">🚚</div>
+            <h4>Trujillo</h4>
+            <span class="precio gratis">GRATIS</span>
+            <p>Entrega en menos de 24 horas</p>
+          </div>
+
+          <div class="tarjeta-destino">
+            <div class="icono-circulo naranja">🚚</div>
+            <h4>Chimbote</h4>
+            <span class="precio">S/ 35</span>
+            <p>Entrega en 24 - 48 horas</p>
+          </div>
+
+          <div class="tarjeta-destino">
+            <div class="icono-circulo rojo">🚚</div>
+            <h4>Chiclayo</h4>
+            <span class="precio">S/ 55</span>
+            <p>Entrega en 48 horas</p>
+          </div>
+
+          <div class="tarjeta-destino">
+            <div class="icono-circulo azul">🚚</div>
+            <h4>Lima</h4>
+            <span class="precio">S/ 80+</span>
+            <p>Entrega en 2 - 3 días</p>
+          </div>
+
+          <div class="tarjeta-destino">
+            <div class="icono-circulo morado">🚚</div>
+            <h4>Piura</h4>
+            <span class="precio">S/ 90+</span>
+            <p>Entrega en 3 días</p>
+          </div>
+
+          <div class="tarjeta-destino">
+            <div class="icono-circulo verde">🚚</div>
+            <h4>Cajamarca</h4>
+            <span class="precio">S/ 70+</span>
+            <p>Entrega en 2 - 3 días</p>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="mapa-envios">
+        <h3>Zona de cobertura</h3>
+        <p>Distribuimos en todo el Perú con enfoque especial en el norte del país.</p>
+      </div>
+
+      <!-- BENEFICIOS -->
+      <div class="beneficios-envio">
+
+        <div class="beneficio">
+          🚛 Transporte especializado
+        </div>
+
+        <div class="beneficio">
+          📦 Empaque seguro y sellado
+        </div>
+
+        <div class="beneficio">
+          ⏱️ Entrega rápida garantizada
+        </div>
+
+        <div class="beneficio">
+          💬 Atención por WhatsApp
+        </div>
+
+      </div>
+
+
+      <div class="cta-envios">
+        <h3>¿Necesitas cotizar tu envío?</h3>
+        <p>Contáctanos y recibe una respuesta inmediata según tu ubicación y pedido.</p>
+        <a href="https://wa.me/51912300685?text=Quiero%20cotizar%20un%20envío" target="_blank" class="aa">
+          <button>Solicitar cotización</button>
+        </a>
+      </div>
+
+    </section>
+
+
+    <section class="seccion-faq" id="faq">
+
+      <div class="encabezado-faq">
+        <span class="etiqueta-faq">Preguntas comunes</span>
+        <h2>Resolvemos tus dudas</h2>
+      </div>
+
+      <div class="contenedor-acordeon">
+
+        <div class="item-acordeon activo">
+          <button class="header-acordeon">
+            <span>¿Cuánto demora un pedido en llegar?</span>
+            <svg class="icono-flecha" viewBox="0 0 24 24" width="24" height="24">
+              <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="contenido-acordeon">
+            <div class="contenido-interno">
+              <p>Despachamos en 24 a 48 horas dentro de Trujillo. A provincias entre 3 y 5 días hábiles. Incluye número
+                de seguimiento para rastreo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-acordeon">
+          <button class="header-acordeon">
+            <span>¿Cómo debo almacenar el alimento?</span>
+            <svg class="icono-flecha" viewBox="0 0 24 24" width="24" height="24">
+              <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="contenido-acordeon">
+            <div class="contenido-interno">
+              <p>Guárdalo en un lugar fresco, seco y ventilado. Evita humedad y sol directo. Coloca los sacos sobre
+                parihuelas y ciérralos bien después de usarlos.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-acordeon">
+          <button class="header-acordeon">
+            <span>¿El precio incluye IGV?</span>
+            <svg class="icono-flecha" viewBox="0 0 24 24" width="24" height="24">
+              <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="contenido-acordeon">
+            <div class="contenido-interno">
+              <p>Sí, todos los precios incluyen IGV. No hay costos ocultos. Puedes solicitar boleta o factura sin
+                recargo adicional.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-acordeon">
+          <button class="header-acordeon">
+            <span>¿Tienen descuentos por volumen?</span>
+            <svg class="icono-flecha" viewBox="0 0 24 24" width="24" height="24">
+              <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="contenido-acordeon">
+            <div class="contenido-interno">
+              <p>Sí, ofrecemos precios especiales por volumen desde 1 tonelada. Mientras más compres, menor es el precio
+                por unidad.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-acordeon">
+          <button class="header-acordeon">
+            <span>¿Puedo cambiar de fórmula a mitad de campaña?</span>
+            <svg class="icono-flecha" viewBox="0 0 24 24" width="24" height="24">
+              <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="contenido-acordeon">
+            <div class="contenido-interno">
+              <p>Sí, pero se recomienda hacer el cambio progresivo entre 3 y 5 días para evitar estrés digestivo en los
+                animales.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-acordeon">
+          <button class="header-acordeon">
+            <span>¿Hacen visita técnica gratis?</span>
+            <svg class="icono-flecha" viewBox="0 0 24 24" width="24" height="24">
+              <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="contenido-acordeon">
+            <div class="contenido-interno">
+              <p>Sí, ofrecemos visitas técnicas gratuitas según el volumen de compra. Evaluamos nutrición, manejo y
+                rendimiento en campo.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+
+    <section class="seccion-contacto" id="contacto">
+      <div class="contenedor-contacto">
+
+        <div class="tarjeta-formulario">
+          <h3>Conversemos</h3>
+          <p class="subtitulo-formulario">Cuéntanos tus dudas. Te respondemos en menos de 24 horas.</p>
+          <form id="formContacto" action="/contacto" method="POST">
+
+
+            <div class="grupo-campo">
+
+              <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+
+
+              <small id="errorNombre" class="text-danger"></small>
+
+            </div>
+
+
+
+            <div class="grupo-campo">
+
+              <input type="email" id="correo" name="correo" placeholder="Correo">
+
+
+              <small id="errorCorreo" class="text-danger"></small>
+
+            </div>
+
+
+
+            <div class="grupo-campo">
+
+              <input type="tel" id="telefono" name="telefono" placeholder="Teléfono">
+
+
+              <small id="errorTelefono" class="text-danger"></small>
+
+            </div>
+
+
+
+
+            <div class="grupo-campo">
+
+              <textarea id="mensaje" name="mensaje" placeholder="Mensaje" rows="5"></textarea>
+
+
+              <small id="errorMensaje" class="text-danger"></small>
+
+            </div>
+
+
+
+
+            <button type="submit" id="btnEnviar" class="boton-enviar">
+
+
+              <span id="textoBtn">
+                Enviar mensaje
+              </span>
+
+
+              <span id="loader" class="spinner" style="display:none;"></span>
+
+
+            </button>
+
+
+          </form>
+        </div>
+
+        <div class="bloques-info">
+
+          <div class="info-item">
+            <div class="icono-contacto bg-naranja">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div class="texto-contacto">
+              <h4>Av. Industrial 1234</h4>
+              <p>Trujillo · La Libertad · Perú</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icono-contacto bg-turquesa">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+            </div>
+            <div class="texto-contacto">
+              <h4>+51 999 888 777</h4>
+              <p>Lun – Sáb · 8:00 – 18:00</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icono-contacto bg-azul">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div class="texto-contacto">
+              <h4>ventas@animalfeed.com.pe</h4>
+              <p>Atención comercial</p>
+            </div>
+          </div>
+
+          <a href="https://wa.me/912300685" target="_blank" class="info-item enlace-wsp">
+            <div class="icono-contacto bg-verde">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                </path>
+              </svg>
+            </div>
+            <div class="texto-contacto">
+              <h4>WhatsApp directo</h4>
+              <p>Habla con un asesor ahora</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="contenedor-chat-flotante">
+
+      <div class="ventana-chat" id="ventanaChat">
+
+        <div class="encabezado-chat">
+          <div class="avatar-asistente">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z" />
+            </svg>
+          </div>
+          <div class="info-asistente">
+            <h4> Animal Feed Solutions</h4>
+            <div class="estado-linea">
+              <span class="punto-verde"></span>
+              <span>En línea</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cuerpo-chat">
+
+          <div class="mensaje-bot">
+            <p>¡Hola! Soy 🐔 Asistente AFS. Pregúntame sobre pedidos, productos o el sistema.</p>
+          </div>
+
+          <div class="bloque-sugerencias-chat">
+            <button class="chip-sugerencia">¿Cómo creo un pedido?</button>
+            <button class="chip-sugerencia">Ver productos</button>
+            <button class="chip-sugerencia">Estado de mis pagos</button>
+            <button class="chip-sugerencia">Hablar con soporte</button>
+          </div>
+
+        </div>
+
+        <div class="pie-chat">
+          <input type="text" placeholder="Escribe un mensaje..." id="inputMensajeChat">
+          <button class="boton-enviar-chat" aria-label="Enviar mensaje">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+
+      <button class="boton-toggle-chat" id="btnToggleChat" aria-label="Abrir chat de soporte">
+        <span class="notificacion-dot"></span>
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+          <path
+            d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
+        </svg>
+      </button>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- pata -->
+
+    <div th:replace="fragmentos/pie :: pie"></div>
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script th:src="@{/script/chat.js}"></script>
+  <script th:src="@{/script/nav.js}"></script>
+  <script th:src="@{/script/index.js}"></script>
+</body>
+
+</html>

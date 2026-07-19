@@ -1,0 +1,214 @@
+<div th:fragment="modalAdmin">
+
+
+
+    <div class="modal fade" id="modalAgregarAdmin" tabindex="-1">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header bg-success text-white">
+                    <h5>Agregar Administrador</h5>
+                    <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form id="formAgregarAdmin">
+
+                        <div class="mb-3">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" id="nombreAdmin">
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Correo</label>
+                            <input type="email" class="form-control" id="correoAdmin">
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Contraseña</label>
+                            <input type="password" class="form-control" id="passwordAdmin">
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+
+                    <button class="btn btn-success" onclick="guardarAdministrador()">
+
+                        Guardar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="modal fade" id="modalActualizarAdmin">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header bg-warning">
+
+                    <h5>Actualizar Administrador</h5>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="mb-3">
+
+                        <label>Correo del administrador</label>
+
+                        <div class="input-group">
+
+                            <input type="email" class="form-control" id="buscarCorreoActualizar">
+
+                            <button class="btn btn-primary" onclick="buscarAdministrador()">
+
+                                Buscar
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="mb-3">
+
+                        <label>Nombre</label>
+
+                        <input type="text" class="form-control" id="actualizarNombre">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label>Correo</label>
+
+                        <input type="email" class="form-control" id="actualizarCorreo">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label>Contraseña</label>
+
+                        <input type="password" class="form-control" id="actualizarPassword">
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button class="btn btn-warning" onclick="actualizarAdministrador()">
+
+                        Actualizar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="modal fade" id="modalEliminarAdmin">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+
+                <div class="modal-header bg-danger text-white">
+
+                    <h5>Eliminar Administrador</h5>
+
+                </div>
+
+
+                <div class="modal-body">
+
+
+                    <label>Correo del administrador</label>
+
+                    <div class="input-group mb-3">
+
+                        <input type="email" class="form-control" id="correoEliminar">
+
+                        <button class="btn btn-dark" onclick="enviarOTPEliminar()">
+
+                            Enviar OTP
+
+                        </button>
+
+                    </div>
+
+
+
+                    <div id="campoOTP" style="display:none;">
+
+
+                        <label>Código OTP</label>
+
+                        <input type="text" class="form-control mb-3" id="codigoOTP">
+
+
+                    </div>
+
+
+                    <p class="text-danger">
+
+                        Esta acción no se puede deshacer.
+
+                    </p>
+
+
+                </div>
+
+
+                <div class="modal-footer">
+
+
+                    <button class="btn btn-danger" onclick="eliminarAdministrador()">
+
+                        Eliminar
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+</div>

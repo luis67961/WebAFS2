@@ -1,0 +1,125 @@
+<body>
+
+    <nav id="sidebar" class="navAdmin" th:fragment="navAdmin">
+
+
+        <!-- LOGO / TITULO -->
+        <div class="sidebar-brand">
+
+            <i class="bi bi-heart-pulse-fill"></i>
+
+            <div>
+                <h4>Animal Feed</h4>
+                <span>Solutions</span>
+            </div>
+
+        </div>
+
+
+        <hr class="sidebar-divider">
+
+
+        <!-- MENU -->
+        <ul class="list-unstyled menu-admin">
+
+
+            <li>
+                <a th:href="@{/admin}">
+                    <i class="bi bi-speedometer2"></i>
+                    <span class="texto-sidebar">Dashboard</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a th:href="@{/pedidosAdmin}">
+                    <i class="bi bi-cart"></i>
+                    <span class="texto-sidebar">Pedidos</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a th:href="@{/productos}">
+                    <i class="bi bi-box-seam"></i>
+                    <span class="texto-sidebar">Productos</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a th:href="@{/pagos}">
+                    <i class="bi bi-cash-stack"></i>
+                    <span class="texto-sidebar">Finanzas</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a th:href="@{/visitaTecnica}">
+                    <i class="bi bi-tools"></i>
+                    <span class="texto-sidebar">Visitas</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a th:href="@{/reportes}">
+                    <i class="bi bi-file-earmark-bar-graph"></i>
+                    <span class="texto-sidebar">Reportes</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a th:href="@{/clientes}">
+                    <i class="bi bi-people"></i>
+                    <span class="texto-sidebar">Clientes</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a th:href="@{/ConsultasAdmin}">
+                    <i class="bi bi-person-lock"></i>
+                    <span class="texto-sidebar">Consultas</span>
+                </a>
+            </li>
+
+
+
+            <li>
+                <a th:href="@{/Accesos}">
+                    <i class="bi bi-person-lock"></i>
+                    <span class="texto-sidebar">Accesos</span>
+                </a>
+            </li>
+
+
+        </ul>
+
+
+
+        <!-- SEPARADOR SALIDA -->
+        <div class="sidebar-bottom">
+
+            <hr class="sidebar-divider">
+
+
+            <button onclick="cerrarSesion()" class="logout-btn">
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                <span class="texto-sidebar">
+                    Cerrar sesión
+                </span>
+
+            </button>
+
+        </div>
+
+
+    </nav>
+
+
+</body>

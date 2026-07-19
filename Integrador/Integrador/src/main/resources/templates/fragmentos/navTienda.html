@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<nav th:fragment="navbarT" class="navbar navbar-expand-lg navbar-dark glass-navbar sticky-top">
+  <div class="container">
+
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+      <img src="https://github.com/davonlzz18/multimedia/blob/main/LOGOTIPO%20AI-10.png?raw=true" alt="AFS Logo"
+        class="logo-img">
+    </a>
+
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <!-- Search -->
+      <div class="d-flex ms-auto search-box">
+        <!-- From Uiverse.io by VijinV -->
+        <div class="inputbox">
+          <input required="required" type="text">
+          <span>Buscar producto</span>
+          <i></i>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+
+        <li class="nav-item">
+          <a class="nav-link glass-link" th:href="@{/tienda}">Tienda</a>
+        </li>
+
+    
+        <li class="nav-item">
+          <a class="nav-link glass-link" th:href="@{/miCuenta}">Mi Cuenta</a>
+        </li>
+
+        
+        <!-- Cart -->
+        <li class="nav-item">
+          <!-- CARRITO -->
+          <button class="cart-btn position-relative" onclick="irATienda('cart')">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="badge-cart" th:text="${cartCount != null ? cartCount : 0}">0</span>
+          </button>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+</html>

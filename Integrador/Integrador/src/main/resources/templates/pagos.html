@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de pagos</title>
+
+    <link rel="stylesheet" th:href="@{/estilos/navAdmin.css}">
+    <link rel="stylesheet" th:href="@{/estilos/pagos.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+
+
+
+
+    <div th:replace="fragmentos/navAdmin :: navAdmin"></div>
+    <div th:replace="fragmentos/modalAdmin :: modalAdmin"></div>
+
+
+
+    <main class="contenido">
+
+
+
+        <div class="container-fluid py-4 px-3 px-md-4">
+
+            <div class=" p-3 rounded-4 shadow-sm mb-4 ">
+                <h2 class="mb-0 text-white fw-semibold d-flex align-items-center">
+                    Finanzas - Panel de Movimientos
+                </h2>
+            </div>
+            <!-- ================= BOTONES PANEL ================= -->
+            <div class="container mb-4">
+
+<div class="row g-3">
+
+                    <!-- COBROS -->
+    <div class="col-12 col-sm-6 col-lg-3">
+                        <button class="btn btn-outline-success w-100 h-100 shadow-sm rounded-4 py-3"
+                            onclick="mostrarCobro()">
+
+                            <i class="bi bi-cash-coin fs-4 d-block mb-1"></i>
+                            <strong>Cobros</strong>
+                            <div class="small text-muted">Ingresos</div>
+
+                        </button>
+                    </div>
+
+                    <!-- PAGOS -->
+    <div class="col-12 col-sm-6 col-lg-3">
+                        <button class="btn btn-outline-primary w-100 h-100 shadow-sm rounded-4 py-3"
+                            onclick="mostrarPago()">
+
+                            <i class="bi bi-arrow-down-circle fs-4 d-block mb-1"></i>
+                            <strong>Pagos</strong>
+                            <div class="small text-muted">Salidas</div>
+
+                        </button>
+                    </div>
+
+                    <!-- EGRESOS -->
+    <div class="col-12 col-sm-6 col-lg-3">
+                        <button class="btn btn-outline-warning w-100 h-100 shadow-sm rounded-4 py-3"
+                            onclick="mostrarEgreso()">
+
+                            <i class="bi bi-dash-circle fs-4 d-block mb-1"></i>
+                            <strong>Egresos</strong>
+                            <div class="small text-muted">Gastos</div>
+
+                        </button>
+                    </div>
+
+                    <!-- REPORTE -->
+    <div class="col-12 col-sm-6 col-lg-3">
+                        <button class="btn btn-dark w-100 h-100 shadow-sm rounded-4 py-3"
+                            onclick="toggleReporteMovimientos()">
+
+                            <i class="bi bi-bar-chart-line fs-4 d-block mb-1"></i>
+                            <strong>Reporte</strong>
+                            <div class="small text-muted">Dashboard</div>
+
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <!-- MODAL COBRO -->
+        <div class="modal fade" id="modalCobro" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+
+                    <div class="modal-header text-white" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                        <h5 class="modal-title">
+                            <i class="bi bi-cash-coin me-2"></i> Registrar cobro
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body bg-light">
+
+                        <div class="row g-3">
+
+                            <!-- ORIGEN -->
+                            <div class="col-md-6">
+                                <label class="form-label">Origen</label>
+                                <select id="cobroOrigen" class="form-select">
+                                    <option disabled selected>Seleccione origen</option>
+                                    <option>Pedido Web</option>
+                                    <option>Venta presencial</option>
+                                </select>
+                            </div>
+
+                            <!-- REFERENCIA -->
+                            <div class="col-md-6">
+                                <label class="form-label">Referencia</label>
+                                <input id="cobroReferencia" type="text" class="form-control"
+                                    placeholder="Ej: PED-00125">
+                            </div>
+
+                            <!-- MONTO -->
+                            <div class="col-md-6">
+                                <label class="form-label">Monto</label>
+                                <input id="cobroMonto" type="number" class="form-control" placeholder="0.00">
+                            </div>
+
+                            <!-- MÉTODO -->
+                            <div class="col-md-6">
+                                <label class="form-label">Método</label>
+                                <select id="cobroMetodo" class="form-select">
+                                    <option disabled selected>Seleccione método</option>
+                                    <option>Efectivo</option>
+                                    <option>Yape</option>
+                                    <option>Plin</option>
+                                    <option>Transferencia</option>
+                                    <option>Tarjeta</option>
+                                </select>
+                            </div>
+
+                            <!-- FECHA -->
+                            <div class="col-md-6">
+                                <label class="form-label">Fecha</label>
+                                <input id="cobroFecha" type="date" class="form-control">
+                            </div>
+
+                            <!-- ESTADO -->
+                            <div class="col-md-6">
+                                <label class="form-label">Estado</label>
+                                <select id="cobroEstado" class="form-select">
+                                    <option disabled selected>Seleccione estado</option>
+                                    <option>Pendiente</option>
+                                    <option>Confirmado</option>
+                                </select>
+                            </div>
+
+                            <!-- DESCRIPCIÓN -->
+                            <div class="col-12">
+                                <label class="form-label">Descripción</label>
+                                <textarea id="cobroDescripcion" class="form-control" rows="3"></textarea>
+                            </div>
+
+                            <!-- FILE -->
+                            <div class="col-12">
+                                <label class="form-label">Evidencia</label>
+                                <input id="cobroFile" type="file" class="form-control" accept="image/*,.pdf">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                        <button class="btn btn-success" onclick="guardarCobro()">Guardar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- SECCIÓN OCULTA  cobro-->
+
+        <div id="vistaCobro" class="cobro-container container-fluid px-4 py-4 mb-4" style="display: none;">
+
+            <!-- HEADER -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0"> Cobros</h3>
+
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCobro">
+                    + Nuevo cobro
+                </button>
+            </div>
+
+            <!-- TABLE CARD -->
+            <div class="card shadow-sm">
+
+                <div class="card-body table-responsive">
+
+                    <table class="table table-hover table-success   ">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Origen</th>
+                                <th>Referencia</th>
+                                <th>Monto</th>
+                                <th>Método</th>
+                                <th>Estado</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tbodyCobros"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal fade" id="modalDetalleCobro" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title">
+                            <i class="bi bi-eye me-2"></i> Detalle del cobro
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div id="detalleCobroContent"></div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- MODAL PAGO -->
+        <div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+
+                    <!-- HEADER -->
+                    <div class="modal-header text-white" style="background: linear-gradient(135deg, #3f9fdf, #36538a);">
+
+                        <h5 class="modal-title fw-semibold" id="modalPagoLabel">
+                            <i class="bi bi-cash-stack me-2"></i>
+                            Registrar pago
+                        </h5>
+
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- BODY -->
+                    <div class="modal-body bg-light">
+
+                        <div class="row g-3">
+
+                            <!-- DESTINO -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-diagram-3 me-1"></i> Destino del pago
+                                </label>
+
+                                <select id="pagoDestino" class="form-select shadow-sm">
+                                    <option value="" selected disabled>Seleccione destino</option>
+                                    <option value="Proveedor">Proveedor</option>
+                                    <option value="Insumos">Insumos</option>
+                                    <option value="Servicio">Servicio</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <!-- PROVEEDOR -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-person-badge me-1"></i> Proveedor / Beneficiario
+                                </label>
+
+                                <div class="input-group shadow-sm">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-building"></i>
+                                    </span>
+
+                                    <input id="pagoProveedor" type="text" class="form-control"
+                                        placeholder="Ej: Molino Perú / Persona">
+                                </div>
+                            </div>
+
+                            <!-- CONCEPTO -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-card-text me-1"></i> Concepto
+                                </label>
+
+                                <div class="input-group shadow-sm">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </span>
+
+                                    <input id="pagoConcepto" type="text" class="form-control"
+                                        placeholder="Ej: Compra de alimento balanceado">
+                                </div>
+                            </div>
+
+                            <!-- MONTO -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-cash-coin me-1"></i> Monto
+                                </label>
+
+                                <div class="input-group shadow-sm">
+                                    <span class="input-group-text">S/</span>
+
+                                    <input id="pagoMonto" type="number" class="form-control" placeholder="0.00">
+                                </div>
+                            </div>
+
+                            <!-- MÉTODO -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-wallet2 me-1"></i> Método de pago
+                                </label>
+
+                                <select id="pagoMetodo" class="form-select shadow-sm">
+                                    <option value="" selected disabled>Seleccione método</option>
+                                    <option value="Efectivo">Efectivo</option>
+                                    <option value="Yape">Yape</option>
+                                    <option value="Plin">Plin</option>
+                                    <option value="Transferencia">Transferencia</option>
+                                    <option value="Tarjeta">Tarjeta</option>
+                                </select>
+                            </div>
+
+                            <!-- FECHA -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-calendar-event me-1"></i> Fecha
+                                </label>
+
+                                <input id="pagoFecha" type="date" class="form-control shadow-sm">
+                            </div>
+
+                            <!-- ESTADO -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-check-circle me-1"></i> Estado
+                                </label>
+
+                                <select id="pagoEstado" class="form-select shadow-sm">
+                                    <option value="" selected disabled>Seleccione estado</option>
+                                    <option value="Pendiente">Pendiente</option>
+                                    <option value="Completado">Completado</option>
+                                    <option value="Anulado">Anulado</option>
+                                </select>
+                            </div>
+
+                            <!-- REFERENCIA -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-hash me-1"></i> Referencia
+                                </label>
+
+                                <input id="pagoReferencia" type="text" class="form-control shadow-sm"
+                                    placeholder="Factura / boleta / código de operación">
+                            </div>
+
+                            <!-- DESCRIPCIÓN -->
+                            <div class="col-12">
+                                <label class="form-label">
+                                    <i class="bi bi-chat-left-text me-1"></i> Descripción
+                                </label>
+
+                                <textarea id="pagoDescripcion" class="form-control shadow-sm" rows="3"
+                                    placeholder="Detalle del pago..."></textarea>
+                            </div>
+
+                            <!-- EVIDENCIA -->
+                            <div class="col-12">
+                                <label class="form-label">
+                                    <i class="bi bi-paperclip me-1"></i> Evidencia
+                                </label>
+
+                                <input id="pagoFile" type="file" class="form-control shadow-sm" accept="image/*,.pdf">
+
+                                <div class="form-text">
+                                    Adjunte comprobantes, facturas o recibos.
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- FOOTER -->
+                    <div class="modal-footer bg-white border-0">
+
+                        <button type="button" class="btn btn-light shadow-sm" data-bs-dismiss="modal">
+
+                            <i class="bi bi-x-circle me-1"></i>
+                            Cancelar
+
+                        </button>
+
+                        <button type="button" class="btn btn-primary shadow-sm" onclick="guardarPago()">
+
+                            <i class="bi bi-check2-circle me-1"></i>
+                            Registrar pago
+
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- SECCIÓN OCULTA PAGO-->
+
+
+        <div id="vistaPago" class="pago-container container-fluid px-4 py-4 mb-4" style="display: none;">
+
+            <!-- HEADER -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0"> Pagos</h3>
+
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPago">
+                    + Nuevo pago
+                </button>
+            </div>
+
+            <!-- TABLE CARD -->
+            <div class="card shadow-sm">
+
+                <div class="card-body table-responsive">
+
+                    <table class="table table-hover table-info">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Destino</th>
+                                <th>Proveedor / Beneficiario</th>
+                                <th>Concepto</th>
+                                <th>Método</th>
+                                <th>Monto</th>
+                                <th>Estado</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tbodyPagos">
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MODAL DETALLE PAGO -->
+        <div class="modal fade" id="modalDetallePago" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+
+                    <!-- HEADER CELESTE -->
+                    <div class="modal-header text-white" style="background: linear-gradient(135deg, #60a5fa, #3b82f6);">
+                        <h5 class="modal-title">
+                            <i class="bi bi-receipt me-2"></i> Detalle del pago
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- BODY -->
+                    <div class="modal-body bg-light">
+                        <div id="detallePagoContent"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <!-- MODAL EGRESO -->
+        <div class="modal fade" id="modalEgreso" tabindex="-1" aria-labelledby="modalEgresoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+
+                    <!-- HEADER -->
+                    <div class="modal-header text-white" style="background: linear-gradient(135deg, #f59e0b, #f97316);">
+                        <h5 class="modal-title fw-semibold" id="modalEgresoLabel">
+                            <i class="bi bi-dash-circle me-2"></i>
+                            Registrar egreso
+                        </h5>
+
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- BODY -->
+                    <div class="modal-body bg-light">
+
+                        <div class="row g-3">
+
+                            <!-- TIPO -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-tags me-1"></i> Tipo de egreso
+                                </label>
+                                <select id="egresoTipo" class="form-select shadow-sm">
+                                    <option selected disabled>Seleccione tipo</option>
+                                    <option>Gastos operativos</option>
+                                    <option>Transporte</option>
+                                    <option>Servicios</option>
+                                    <option>Compras menores</option>
+                                    <option>Ajustes negativos</option>
+                                </select>
+                            </div>
+
+                            <!-- DESTINO -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-person-badge me-1"></i> Destino / Beneficiario
+                                </label>
+
+                                <div class="input-group shadow-sm">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-building"></i>
+                                    </span>
+                                    <input id="egresoDestino" type="text" class="form-control"
+                                        placeholder="Ej: Empresa de luz / Proveedor">
+                                </div>
+                            </div>
+
+                            <!-- CONCEPTO -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-card-text me-1"></i> Concepto
+                                </label>
+
+                                <div class="input-group shadow-sm">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </span>
+                                    <input id="egresoConcepto" type="text" class="form-control"
+                                        placeholder="Ej: Pago de combustible">
+                                </div>
+                            </div>
+
+                            <!-- MONTO -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-cash-coin me-1"></i> Monto
+                                </label>
+
+                                <div class="input-group shadow-sm">
+                                    <span class="input-group-text">S/</span>
+                                    <input id="egresoMonto" type="number" class="form-control" placeholder="0.00">
+                                </div>
+                            </div>
+
+                            <!-- MÉTODO -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-wallet2 me-1"></i> Método de salida
+                                </label>
+                                <select id="egresoMetodo" class="form-select shadow-sm">
+                                    <option selected disabled>Seleccione método</option>
+                                    <option>Efectivo</option>
+                                    <option>Yape</option>
+                                    <option>Plin</option>
+                                    <option>Transferencia</option>
+                                    <option>Tarjeta</option>
+                                </select>
+                            </div>
+
+                            <!-- FECHA -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-calendar-event me-1"></i> Fecha
+                                </label>
+                                <input id="egresoFecha" type="date" class="form-control shadow-sm">
+                            </div>
+
+                            <!-- ESTADO -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-check-circle me-1"></i> Estado
+                                </label>
+                                <select id="egresoEstado" class="form-select shadow-sm">
+                                    <option selected disabled>Seleccione estado</option>
+                                    <option>Pendiente</option>
+                                    <option>Completado</option>
+                                    <option>Anulado</option>
+                                </select>
+                            </div>
+
+                            <!-- REFERENCIA -->
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-hash me-1"></i> Referencia
+                                </label>
+                                <input id="egresoReferencia" type="text" class="form-control shadow-sm"
+                                    placeholder="N° recibo o código interno">
+                            </div>
+
+                            <!-- DESCRIPCIÓN -->
+                            <div class="col-12">
+                                <label class="form-label">
+                                    <i class="bi bi-chat-left-text me-1"></i> Descripción
+                                </label>
+                                <textarea id="egresoDescripcion" class="form-control shadow-sm" rows="3"
+                                    placeholder="Detalle del egreso..."></textarea>
+                            </div>
+
+                            <!-- ARCHIVO -->
+                            <div class="col-12">
+                                <label class="form-label">
+                                    <i class="bi bi-paperclip me-1"></i> Evidencia
+                                </label>
+                                <input id="egresoFile" type="file" class="form-control shadow-sm" accept="image/*,.pdf">
+
+                                <div class="form-text">
+                                    Suba comprobantes o recibos del gasto.
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- FOOTER -->
+                    <div class="modal-footer bg-white border-0">
+
+                        <button type="button" class="btn btn-light shadow-sm" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle me-1"></i> Cancelar
+                        </button>
+
+                        <button type="button" class="btn btn-warning shadow-sm px-4" onclick="guardarEgreso()">
+                            <i class="bi bi-check2-circle me-1"></i>
+                            Registrar egreso
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN OCULTA EGRESO-->
+
+        <div id="vistaEgreso" class="egreso-container container-fluid px-4 py-4 mb-4" style="display: none;">
+
+            <!-- HEADER -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0"> Egresos</h3>
+
+                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEgreso">
+                    + Nuevo egreso
+                </button>
+            </div>
+
+            <!-- TABLE CARD -->
+            <div class="card shadow-sm">
+
+                <div class="card-body table-responsive">
+
+                    <table class="table table-hover table-hover table-warning">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Tipo</th>
+                                <th>Beneficiario</th>
+                                <th>Concepto</th>
+                                <th>Método</th>
+                                <th>Monto</th>
+                                <th>Estado</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tbodyEgresos"></tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- MODAL DETALLE EGRESO -->
+        <div class="modal fade" id="modalDetalleEgreso" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+
+                    <!-- HEADER -->
+                    <div class="modal-header text-white" style="background: linear-gradient(135deg, #f59e0b, #f97316);">
+                        <h5 class="modal-title fw-semibold">
+                            <i class="bi bi-eye me-2"></i>
+                            Detalle de egreso
+                        </h5>
+
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- BODY -->
+                    <div class="modal-body bg-light">
+
+                        <div id="detalleEgresoContent"></div>
+
+                    </div>
+
+                    <!-- FOOTER -->
+                    <div class="modal-footer bg-white border-0">
+
+                        <button type="button" class="btn btn-light shadow-sm" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle me-1"></i> Cerrar
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!--  CONTENEDOR OCULTO  -->
+        <div id="contenedorReporteMovimientos" style="display:none;" class="container-fluid px-4 py-3 bg-white">
+            <div class="card shadow-sm border-0 mb-3">
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">
+                            Reporte de Movimientos
+                        </h4>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- AQUÍ SE RENDERIZA TODO TU DASHBOARD -->
+            <div id="dynamic-report-content"></div>
+
+
+
+
+            <!-- ================= KPIs ================= -->
+            <div class="row g-3 mb-4">
+
+                <div class="col-md-3">
+                    <div class="card border-success shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-arrow-left-right fs-2 text-success"></i>
+                            <h6>Flujo Neto</h6>
+                            <h3 id="kpiFlujoNeto">0</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card border-primary shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-calculator fs-2 text-primary"></i>
+                            <h6>Promedio Movimiento</h6>
+                            <h3 id="kpiPromedio">0</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card border-warning shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-pie-chart fs-2 text-warning"></i>
+                            <h6>COBRO %</h6>
+                            <h3 id="kpiCobroPct">0%</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card border-danger shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-exclamation-triangle fs-2 text-danger"></i>
+                            <h6>Pendientes</h6>
+                            <h3 id="kpiPendientes">0</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ================= TOP + PENDIENTES ================= -->
+            <div class="row g-3 mb-4">
+
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <div class="card-header">📉 Top Egresos</div>
+                        <div class="card-body" id="topEgresos"></div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <div class="card-header text-danger">⚠ Pendientes</div>
+                        <div class="card-body" id="listaPendientes"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ================= POR MES ================= -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">📆 Movimientos por mes</div>
+                <div class="card-body">
+                    <canvas id="graficoMeses"></canvas>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <script th:src="@{/script/navAdmin.js}"></script>
+
+
+        <script th:src="@{/script/pagos.js}"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    </main>
+</body>
+
+</html>

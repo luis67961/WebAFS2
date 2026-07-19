@@ -1,0 +1,327 @@
+
+@keyframes ambientShift {
+  0% {
+    filter: brightness(1) saturate(1);
+  }
+  100% {
+    filter: brightness(1.05) saturate(0.95);
+  }
+}
+
+
+
+
+
+
+.glass-navbar {
+  animation: fadeUp 0.8s ease-out;
+}
+
+
+
+
+
+.glass-navbar {
+    height: 120px;
+
+  padding: 18px 28px;
+
+  background: rgba(0, 0, 0, 0.913);
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(201, 180, 120, 0.15);
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+
+  transition: all 0.6s ease;
+}
+
+
+
+.navbar-brand span {
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #e8e2d1;
+
+  transition: 0.5s ease;
+}
+
+.navbar-brand span:hover {
+  letter-spacing: 3px;
+  color: #000000;
+}
+
+.glass-link {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.glass-link:hover {
+  color: #D08A3C !important;
+  transform: translateY(-1px);
+}
+
+.glass-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+
+  width: 0%;
+  height: 1px;
+
+  background: #D08A3C;
+
+  transition: 0.5s ease;
+}
+
+.glass-link:hover::after {
+  width: 100%;
+}
+
+
+
+/*LOGO*/
+
+.logo-img {
+  height: 150px; 
+  width: auto;
+
+  display: block;
+  object-fit: contain;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*BBUSQUEDA*/
+
+
+.inputbox {
+  position: relative;
+  width: 300px;
+}
+
+.inputbox input {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  color: #000000;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  z-index: 10;
+}
+
+.inputbox span {
+  position: absolute;
+  left: 0;
+  padding: 20px 10px 10px;
+  font-size: 1em;
+  color: #adabab;
+  letter-spacing: 00.05em;
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.inputbox input:valid ~span,
+.inputbox input:focus ~span {
+  color: #D08A3C;
+  transform: translateX(-10px) translateY(-34px);
+  font-size: 0,75em;
+}
+
+.inputbox i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #D08A3C;
+  border-radius: 4px;
+  transition: 0.5s;
+  pointer-events: none;
+  z-index: 9;
+}
+
+.inputbox input:valid ~i,
+.inputbox input:focus ~i {
+  height: 44px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*BTN CARRITO*/
+
+.cart-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f3f1ea;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  backdrop-filter: blur(12px);
+}
+
+.cart-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(201, 180, 120, 0.12);
+  border-color: rgba(201, 180, 120, 0.35);
+  color: #D08A3C;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.cart-btn i {
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+CARITO
+*/
+
+
+.cart-panel {
+  height: 70vh; 
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  background: #0f1f17;
+  color: #f3f1ea;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+.cart-header,
+.cart-footer {
+  background: rgba(15, 31, 23, 0.95);
+  backdrop-filter: blur(12px);
+}
+
+.cart-body {
+  overflow-y: auto;
+  flex: 1;
+}
+body.offcanvas-open {
+  overflow: hidden !important;
+}
+
+.offcanvas-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1040;
+}
+
+.cart-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.cart-footer {
+  position: sticky;
+  bottom: 0;
+  background: #0f1f17;
+  z-index: 2;
+}
+
+
+
+
+
+
+
+
+
+/*ANIMACION*/
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glass-link {
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.glass-link:nth-child(1) { animation-delay: 0.25s; }
+.glass-link:nth-child(2) { animation-delay: 0.35s; }
+.glass-link:nth-child(3) { animation-delay: 0.45s; }
+.glass-link:nth-child(4) { animation-delay: 0.55s; }
+
+.inputbox {
+  opacity: 0;
+  animation: fadeUp 0.9s ease-out forwards;
+  animation-delay: 0.4s;
+}
+.cart-btn {
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out forwards;
+  animation-delay: 0.6s;
+}

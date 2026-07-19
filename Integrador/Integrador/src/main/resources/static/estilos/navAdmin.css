@@ -1,0 +1,509 @@
+/*==========================================
+        SIDEBAR ADMIN
+==========================================*/
+
+
+.navAdmin{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:280px;
+
+    height:100vh;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+
+    background:
+
+    radial-gradient(circle at top left,
+    rgba(0,255,170,.10),
+    transparent 35%),
+
+
+    radial-gradient(circle at bottom right,
+    rgba(0,255,170,.05),
+    transparent 35%),
+
+
+    #07110d;
+
+
+    border-right:1px solid rgba(255,255,255,.05);
+
+
+    color:white;
+
+
+    overflow-y:auto;
+
+
+    z-index:1000;
+
+}
+
+
+
+/* SCROLL */
+
+.navAdmin::-webkit-scrollbar{
+
+    width:7px;
+
+}
+
+
+.navAdmin::-webkit-scrollbar-thumb{
+
+    background:#00d084;
+
+    border-radius:20px;
+
+}
+
+
+
+
+
+/*==========================================
+        HEADER
+==========================================*/
+
+
+.sidebar-header{
+
+
+    padding:28px 22px;
+
+
+    border-bottom:
+
+    1px solid rgba(255,255,255,.08);
+
+
+}
+
+
+
+.sidebar-brand{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:14px;
+
+
+}
+
+
+
+.sidebar-brand i{
+
+
+    font-size:38px;
+
+
+    color:#00d084;
+
+
+}
+
+
+
+.sidebar-brand h4{
+
+
+    margin:0;
+
+
+    color:white;
+
+
+    font-size:21px;
+
+
+    font-weight:800;
+
+
+    letter-spacing:.5px;
+
+
+}
+
+
+
+.sidebar-brand span{
+
+
+    color:#00d084;
+
+
+    font-size:13px;
+
+
+    font-weight:600;
+
+
+    letter-spacing:2px;
+
+
+    text-transform:uppercase;
+
+
+}
+
+
+
+
+
+
+/*==========================================
+            MENU
+==========================================*/
+
+
+.navAdmin ul{
+
+
+    list-style:none;
+
+
+    padding:25px 15px;
+
+
+    margin:0;
+
+
+    flex:1;
+
+
+}
+
+
+
+.navAdmin ul li{
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+.navAdmin ul li a{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:14px;
+
+
+    text-decoration:none;
+
+
+    color:rgba(255,255,255,.75);
+
+
+    padding:14px 18px;
+
+
+    border-radius:14px;
+
+
+    transition:.35s;
+
+
+    font-weight:500;
+
+
+}
+
+
+
+.navAdmin ul li a i{
+
+
+    font-size:20px;
+
+
+    color:#4bdc9a;
+
+
+    transition:.35s;
+
+
+}
+
+
+
+/* HOVER */
+
+
+.navAdmin ul li a:hover{
+
+
+    background:rgba(0,208,132,.12);
+
+
+    color:white;
+
+
+    transform:translateX(5px);
+
+
+}
+
+
+
+.navAdmin ul li a:hover i{
+
+
+    color:#00ffb3;
+
+
+}
+
+
+
+
+
+/* ACTIVO */
+
+
+.navAdmin ul li a.active{
+
+
+    background:
+
+    linear-gradient(90deg,#00b36e,#00d084);
+
+
+    color:#07110d;
+
+
+    font-weight:700;
+
+
+    box-shadow:
+
+    0 8px 22px rgba(0,208,132,.28);
+
+
+}
+
+
+
+.navAdmin ul li a.active i{
+
+
+    color:#07110d;
+
+
+}
+
+
+
+
+
+
+
+/*==========================================
+            FOOTER
+==========================================*/
+
+
+.sidebar-footer{
+
+
+    padding:20px;
+
+
+    border-top:
+
+    1px solid rgba(255,255,255,.08);
+
+
+    margin-top:auto;
+
+
+}
+
+
+
+.logout-btn{
+
+
+    width:100%;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    gap:10px;
+
+
+    padding:13px;
+
+
+    border:none;
+
+
+    border-radius:14px;
+
+
+
+    background:#881212;
+
+
+    color:#ffffff;
+
+
+
+    font-weight:700;
+
+
+    transition:.35s;
+
+
+}
+
+
+
+.logout-btn i{
+
+
+    font-size:20px;
+
+
+}
+
+
+
+.logout-btn:hover{
+
+
+    background:#8a2f19;
+
+
+    box-shadow:
+
+    0 0 25px rgba(208, 0, 0, 0.35);
+
+
+    transform:translateY(-2px);
+
+
+}
+
+
+
+
+
+/*==========================================
+        RESPONSIVE
+==========================================*/
+
+
+@media(max-width:992px){
+
+
+    .navAdmin{
+
+        width:80px;
+
+    }
+
+
+
+    .sidebar-brand h4,
+
+    .sidebar-brand span,
+
+    .texto-sidebar{
+
+        display:none;
+
+    }
+
+
+
+    .sidebar-brand{
+
+
+        justify-content:center;
+
+    }
+
+
+
+    .navAdmin ul li a{
+
+
+        justify-content:center;
+
+        padding:14px;
+
+
+    }
+
+
+
+    .navAdmin ul li a i{
+
+
+        font-size:22px;
+
+    }
+
+
+
+    .logout-btn{
+
+
+        width:45px;
+
+        height:45px;
+
+        padding:0;
+
+        border-radius:50%;
+
+        margin:auto;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+

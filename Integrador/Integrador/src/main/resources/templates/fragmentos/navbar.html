@@ -1,0 +1,48 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+
+
+<nav class="navbar" th:fragment="navbar">
+
+    <!-- FONDO ANIMADO -->
+    <div class="navbar-bg"></div>
+
+    <div class="logo">
+
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+            <img src="https://github.com/davonlzz18/multimedia/blob/main/LOGOTIPO%20AI-10.png?raw=true" alt="AFS Logo"
+                class="logo-img logo-circle">
+        </a>
+
+
+
+    </div>
+
+
+    <ul class="menu">
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#catalogo">Productos</a></li>
+        <li><a href="#almacenamiento">Almacenamiento</a></li>
+        <li><a href="#envios">Envíos</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <div class="nav-right">
+
+
+        <a href="/login" class="cta">
+            <span>Empleados</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+        </a>
+
+    </div>
+
+</nav>
+
+</html>

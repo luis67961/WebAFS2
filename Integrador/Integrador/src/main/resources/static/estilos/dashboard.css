@@ -1,0 +1,1218 @@
+
+
+
+
+
+
+
+
+
+
+
+
+/*NO TOCAR NADA YA ESTO LO HACE RESPONIVE*/
+
+.content{
+    flex: 1;
+    padding: 25px;
+    min-height: 100vh;
+
+    background:
+    radial-gradient(circle at top left, rgba(0,255,170,.08), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(0,255,170,.05), transparent 30%),
+    #07110d;
+
+    color: #fff;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar{
+    gap: 20px;
+}
+
+.search-box{
+    flex: 1;
+    height: 52px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    gap: 12px;
+
+    backdrop-filter: blur(12px);
+}
+
+
+.content{
+    margin-left: 280px; /* sidebar desktop */
+    transition: margin-left .3s ease;
+
+    flex: 1;
+    padding: 25px;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at top left, rgba(0,255,170,.08), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(0,255,170,.05), transparent 30%),
+        #07110d;
+
+    color: #fff;
+}
+
+/* ============================= */
+/* TABLETS (≤ 991px) */
+/* ============================= */
+@media (max-width: 991.98px){
+    .content{
+        margin-left: 80px; /* sidebar colapsa o desaparece */
+        padding: 20px;
+    }
+}
+
+/* ============================= */
+/* CELULARES (≤ 575px) */
+/* ============================= */
+@media (max-width: 575.98px){
+    .content{
+        margin-left: 60px;
+        padding: 15px;
+    }
+}
+
+
+/*no tocar nada dse eso YA LO HACE RESPOSIVE*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.search-box i{
+    color: #4bdc9a;
+}
+
+.search-box input{
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+}
+
+.search-box input::placeholder{
+    color: rgba(255,255,255,.4);
+}
+
+.icon-btn{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+
+    background: rgba(255,255,255,.05);
+    color: #fff;
+
+    transition: .3s;
+}
+
+.icon-btn:hover{
+    background: #00d084;
+}
+
+.btn-role{
+    border: none;
+    padding: 10px 18px;
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.06);
+    color: white;
+
+    transition: .3s;
+}
+
+.btn-role:hover{
+    background: #00d084;
+}
+
+
+
+.dashboard-title{
+    font-weight: 700;
+}
+
+
+.stats-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.stat-card{
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.05);
+
+    border-radius: 18px;
+    padding: 22px;
+
+    display: flex;
+    gap: 18px;
+
+    backdrop-filter: blur(14px);
+
+    transition: .3s;
+}
+
+.stat-card:hover{
+    transform: translateY(-4px);
+    border-color: rgba(0,255,170,.3);
+}
+
+.icon{
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+}
+
+.green{
+    background: rgba(0,255,170,.12);
+    color: #00d084;
+}
+
+.stat-card h3{
+    margin: 6px 0;
+    font-weight: 700;
+}
+
+.stat-card small{
+    color: rgba(255,255,255,.5);
+}
+
+.positive{
+    color: #00d084;
+    font-size: 12px;
+}
+
+
+
+.charts-grid{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.chart-card{
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.05);
+
+    border-radius: 20px;
+    padding: 20px;
+
+    backdrop-filter: blur(14px);
+}
+
+.card-header-custom{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.card-header-custom small{
+    color: rgba(255,255,255,.4);
+}
+
+
+
+.ventasChart-chart{
+    height: 320px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+
+    background:
+    linear-gradient(to top, rgba(255,255,255,.02), transparent),
+    repeating-linear-gradient(
+        to right,
+        rgba(255,255,255,.03) 0px,
+        rgba(255,255,255,.03) 1px,
+        transparent 1px,
+        transparent 90px
+    ),
+    repeating-linear-gradient(
+        to top,
+        rgba(255,255,255,.03) 0px,
+        rgba(255,255,255,.03) 1px,
+        transparent 1px,
+        transparent 70px
+    );
+}
+
+.chart-line{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(to top, rgba(255,208,0,.35), transparent);
+
+    clip-path: polygon(
+        0% 70%,
+        10% 64%,
+        20% 66%,
+        30% 58%,
+        40% 45%,
+        50% 35%,
+        60% 40%,
+        70% 32%,
+        80% 24%,
+        90% 18%,
+        100% 12%,
+        100% 100%,
+        0% 100%
+    );
+
+    border-top: 3px solid #ffd000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.chart-labels{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+
+    color: rgba(255,255,255,.5);
+    font-size: 12px;
+}
+
+
+
+.donut-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.donut-chart{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+
+    background:
+    conic-gradient(
+        #1d9b3d 0% 32%,
+        #38c172 32% 60%,
+        #f6d365 60% 82%,
+        #f4a300 82% 100%
+    );
+
+    position: relative;
+
+    margin-bottom: 30px;
+}
+
+.donut-chart::after{
+    content: "";
+    position: absolute;
+
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+
+    background: #07110d;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%,-50%);
+}
+
+.legend{
+    width: 100%;
+}
+
+.legend div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 12px;
+
+    color: rgba(255,255,255,.7);
+}
+
+.dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.green{ background: #1d9b3d; }
+.green2{ background: #38c172; }
+.yellow{ background: #f6d365; }
+.orange{ background: #f4a300; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.alert-card{
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.05);
+
+    border-radius: 20px;
+    padding: 20px;
+
+    backdrop-filter: blur(14px);
+}
+
+.alert-item{
+    background: rgba(255,255,255,.03);
+
+    border-radius: 12px;
+    padding: 14px 18px;
+
+    margin-bottom: 12px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: rgba(255,255,255,.75);
+}
+
+.alert-item small{
+    color: rgba(255,255,255,.35);
+}
+
+
+
+@media(max-width:1200px){
+
+    .stats-grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .charts-grid{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width:768px){
+
+    .stats-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .topbar{
+        flex-direction: column;
+    }
+
+    .top-actions{
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+
+
+
+.content{
+    animation: fadeDashboard 1s ease;
+}
+
+
+
+.dashboard-title{
+    animation: slideTop .8s ease;
+}
+
+
+.stat-card{
+    opacity: 0;
+    transform: translateY(40px);
+
+    animation: cardEntrance .7s ease forwards;
+}
+
+/* delay por card */
+.stat-card:nth-child(1){
+    animation-delay: .1s;
+}
+
+.stat-card:nth-child(2){
+    animation-delay: .25s;
+}
+
+.stat-card:nth-child(3){
+    animation-delay: .4s;
+}
+
+.stat-card:nth-child(4){
+    animation-delay: .55s;
+}
+
+
+
+.chart-card{
+    opacity: 0;
+    transform: translateY(50px);
+
+    animation: chartEntrance 1s ease forwards;
+}
+
+.chart-card:nth-child(1){
+    animation-delay: .7s;
+}
+
+.chart-card:nth-child(2){
+    animation-delay: .9s;
+}
+
+
+
+.alert-card{
+    opacity: 0;
+    transform: translateY(40px);
+
+    animation: alertEntrance 1s ease forwards;
+    animation-delay: 1.1s;
+}
+
+
+
+
+@keyframes slideTop{
+
+    from{
+        opacity: 1;
+        transform: translateY(-30px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardEntrance{
+
+    from{
+        opacity: 0;
+        transform: translateY(40px) scale(.95);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes chartEntrance{
+
+    from{
+        opacity: 0;
+        transform: translateY(60px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes alertEntrance{
+
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.stat-card,
+.chart-card,
+.alert-card{
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before,
+.chart-card::before,
+.alert-card::before{
+    content: "";
+
+    position: absolute;
+    top: -100%;
+    left: -100%;
+
+    width: 200%;
+    height: 200%;
+
+    background: linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(95, 110, 54, 0.247),
+        transparent 80%
+    );
+
+    transform: rotate(25deg);
+
+    transition: .8s;
+}
+
+.stat-card:hover::before,
+.chart-card:hover::before,
+.alert-card:hover::before{
+    top: 100%;
+    left: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*EN TODAS LOS CSS YA QUE HACE QUE EL NAV ADMIN NO SE PONGA POR DEBAJO*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*HOVER ESTADISTICAS CARDS*/
+
+.dashboard-card{
+    cursor:pointer;
+    transition:all .35s ease;
+
+}
+
+.dashboard-card:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===============================
+   MENSAJE BIENVENIDA  + perfil admin
+================================ */
+
+.mensaje-bienvenida{
+
+
+    margin-top:20px;
+
+    padding:18px 25px;
+
+
+    border-radius:15px;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        rgba(0,255,153,.12),
+        rgba(0,255,153,.03)
+    );
+
+
+    border:1px solid rgba(0,255,153,.25);
+
+
+
+    color:#e8fff5;
+
+
+    font-size:16px;
+
+
+    font-weight:600;
+
+
+    text-align:center;
+
+
+    box-shadow:
+
+    0 8px 25px rgba(0,0,0,.25);
+
+
+
+    animation: aparecer .5s ease;
+
+
+}
+
+
+
+.nombre-bienvenida{
+
+    color:#00e2bc;
+
+    font-weight:800;
+
+    text-shadow:
+        0 0 8px rgba(0, 0, 0, 0.5);
+
+}
+
+
+@keyframes aparecer{
+
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-10px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* ===============================
+   PERFIL ADMIN
+================================ */
+
+.sidebar-header{
+
+    padding:15px;
+
+}
+
+
+.perfil-admin{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:100%;
+
+}
+
+
+
+.avatar-admin{
+
+
+    width:48px;
+
+    height:48px;
+
+    min-width:48px;
+
+
+    border-radius:50%;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    background:#00ff99;
+
+
+    color:#07110d;
+
+
+    font-size:20px;
+
+    font-weight:bold;
+
+
+}
+
+
+
+/* CONTENEDOR TEXTO */
+
+.datos-admin{
+
+    overflow:hidden;
+
+    flex:1;
+
+}
+
+
+
+.datos-admin h6{
+
+
+    margin:0;
+
+
+    color:white;
+
+
+    font-size:15px;
+
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+
+}
+
+
+
+.datos-admin small{
+
+
+    display:block;
+
+
+    color:#aaa;
+
+
+    font-size:12px;
+
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+
+}
+
+
+
+/* ===============================
+   TABLET
+================================ */
+
+@media(max-width:768px){
+
+
+    .sidebar-header{
+
+        padding:10px;
+
+    }
+
+
+
+    .perfil-admin{
+
+        gap:8px;
+
+    }
+
+
+
+    .avatar-admin{
+
+
+        width:40px;
+
+        height:40px;
+
+        min-width:40px;
+
+
+        font-size:17px;
+
+
+    }
+
+
+
+    .datos-admin h6{
+
+        font-size:13px;
+
+    }
+
+
+
+    .datos-admin small{
+
+        font-size:11px;
+
+    }
+
+
+}
+
+
+/* ===============================
+   TITULO SISTEMA
+================================ */
+
+.titulo-sistema{
+
+    padding:15px 10px;
+
+}
+
+
+
+.titulo-sistema h2{
+
+    margin:0;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#00ff99;
+
+    letter-spacing:1px;
+
+}
+
+
+
+.titulo-sistema p{
+
+    margin-top:5px;
+
+    font-size:13px;
+
+    color:#9ca3af;
+
+}
+
+
+
+/* ===============================
+   PERFIL ADMIN
+================================ */
+
+
+.sidebar-header{
+
+    padding:12px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+
+
+.perfil-admin{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+
+/* AVATAR */
+
+.avatar-admin{
+
+
+    width:50px;
+
+    height:50px;
+
+
+    min-width:50px;
+
+
+    border-radius:50%;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #00ff99,
+        #00b36b
+    );
+
+
+    color:#07110d;
+
+
+    font-size:22px;
+
+    font-weight:bold;
+
+
+    box-shadow:
+    0 0 15px rgba(0,255,153,.35);
+
+
+}
+
+
+
+/* DATOS */
+
+.datos-admin h6{
+
+
+    color:white;
+
+    margin:0;
+
+    font-size:15px;
+
+    font-weight:600;
+
+
+}
+
+
+
+.datos-admin small{
+
+
+    color:#a7a7a7;
+
+    font-size:12px;
+
+
+}

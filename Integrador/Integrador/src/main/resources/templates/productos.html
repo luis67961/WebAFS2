@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" th:href="@{/estilos/navAdmin.css}">
+    <link rel="stylesheet" th:href="@{/estilos/productos.css}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div th:replace="fragmentos/navAdmin :: navAdmin"></div>
+    <div th:replace="fragmentos/modalAdmin :: modalAdmin"></div>
+
+
+    <div class="products-container">
+        <!-- HEADER -->
+        <div class="product-header mb-4">
+
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+
+                <h1 class="mb-0 text-success">Productos</h1>
+
+                <div class="product-actions d-flex flex-wrap align-items-center gap-3">
+
+                    <div class="input-group shadow-sm" style="max-width: 380px;">
+                        <span class="input-group-text bg-dark border-success text-success">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <input type="text" class="form-control bg-dark text-light border-success fw-medium"
+                            placeholder="Buscar productos..." id="searchInput" style="border-left: none;">
+
+                        <button class="btn btn-warning px-4 fw-semibold" id="searchButton">
+                            Buscar
+                        </button>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <button class="btn btn-success" id="btnAgregarProducto" data-bs-toggle="modal"
+                data-bs-target="#addProductModal">
+
+                <i class="bi bi-plus-lg"></i>
+                Agregar Producto
+
+            </button>
+        </div>
+
+        <div class="filtros-container mt-3">
+
+            <div class="pestanas-categorias d-flex flex-wrap gap-2">
+
+                <button class="boton-pestana activo" data-categoria="avicola">Avícola</button>
+                <button class="boton-pestana" data-categoria="crecimiento">Crecimiento</button>
+                <button class="boton-pestana" data-categoria="engorde">Engorde</button>
+                <button class="boton-pestana" data-categoria="otros">Otros</button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- GRID RESPONSIVE -->
+        <div class="product-grid mt-4">
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- ====================== MODAL CONFIRMACIoN ELIMINAR ====================== -->
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-light border-danger">
+
+                <div class="modal-header border-danger">
+                    <h5 class="modal-title text-danger">
+                        <i class="bi bi-trash-fill"></i> Confirmar Eliminación
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body" id="deleteModalBody">
+                </div>
+
+                <div class="modal-footer border-danger">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                        <i class="bi bi-trash"></i> Sí, Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ====================== MODAL DE RESULTADOS DE BÚSQUEDA ====================== -->
+    <div class="modal fade" id="searchResultsModal" tabindex="-1" aria-labelledby="searchResultsLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content bg-dark text-light border-success">
+
+                <div class="modal-header border-success">
+                    <h5 class="modal-title text-success" id="searchResultsLabel">
+                        <i class="bi bi-search"></i> Resultados de Búsqueda
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body" id="searchResultsBody">
+                    <!-- Los resultados se cargan aquí dinámicamente -->
+                </div>
+
+                <div class="modal-footer border-success">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ====================== MODAL ====================== -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-light border-success">
+                <div class="modal-header border-success">
+                    <h5 class="modal-title text-success" id="updateModalLabel">
+                        <i class="bi bi-pencil-square"></i> Actualizar Producto
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="updateForm">
+                        <input type="hidden" id="productId">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre:</label>
+                            <input type="text" class="form-control bg-dark text-light border-success" id="modal-name"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Categoría:</label>
+                            <select class="form-control bg-dark text-light border-success" id="modal-category" required>
+                                <option value="">Seleccione una categoría</option>
+                                <option value="Avícola">Avícola</option>
+                                <option value="Crecimiento">Crecimiento</option>
+                                <option value="Engorde">Engorde</option>
+                                <option value="Otros">Otros</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Descripción:</label>
+                            <textarea class="form-control bg-dark text-light border-success" id="modal-desc"
+                                rows="3"></textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Stock (solo números):</label>
+                                <input type="number" class="form-control bg-dark text-light border-success"
+                                    id="modal-stock" min="0" required>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Precio (S/):</label>
+                                <input type="number" step="0.01" class="form-control bg-dark text-light border-success"
+                                    id="modal-price" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">URL de Imagen:</label>
+                            <input type="text" class="form-control bg-dark text-light border-success" id="modal-image">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer border-success">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" form="updateForm" class="btn btn-success">
+                        <i class="bi bi-check-lg"></i> Guardar Cambios
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- ====================== MODAL AGREGAR PRODUCTO ====================== -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-light border-success">
+
+                <div class="modal-header border-success">
+                    <h5 class="modal-title text-success" id="addProductModalLabel">
+                        <i class="bi bi-plus-lg"></i> Nuevo Producto
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="addProductForm">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre:</label>
+                            <input type="text" class="form-control bg-dark text-light border-success" id="add-name"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Categoría:</label>
+                            <select class="form-select bg-dark text-light border-success" id="add-category" required>
+                                <option value="">Seleccione una categoría</option>
+                                <option value="Avícola">Avícola</option>
+                                <option value="Crecimiento">Crecimiento</option>
+                                <option value="Engorde">Engorde</option>
+                                <option value="Otros">Otros</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Descripción:</label>
+                            <textarea class="form-control bg-dark text-light border-success" id="add-desc"
+                                rows="3"></textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Precio (S/):</label>
+                                <input type="number" step="0.01" class="form-control bg-dark text-light border-success"
+                                    id="add-price" required>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Stock (KG):</label>
+                                <input type="number" min="0" class="form-control bg-dark text-light border-success"
+                                    id="add-stock" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">URL de Imagen:</label>
+                            <input type="text" class="form-control bg-dark text-light border-success" id="add-image">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Peso:</label>
+                                <input type="text" class="form-control bg-dark text-light border-success" id="add-peso">
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Proteína:</label>
+                                <input type="text" class="form-control bg-dark text-light border-success"
+                                    id="add-proteina">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer border-success">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" form="addProductForm" class="btn btn-success">
+                        <i class="bi bi-check-lg"></i> Guardar Producto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="modal fade" id="modalCostoProduccion" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title"> Agrega el costo por KILO de Producción de este producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <input type="hidden" id="productoIdCosto">
+
+                    <div class="mb-3">
+                        <label class="form-label">Producto</label>
+                        <input type="text" id="productoNombreCosto" class="form-control" disabled>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Costo de producción</label>
+                        <input type="number" id="costoProduccionInput" class="form-control" placeholder="Ej: 12.50">
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-success" onclick="guardarCostoProduccion()">
+                        Guardar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script th:src="@{/script/navAdmin.js}"></script>
+
+    <script th:src="@{/script/adminProductos.js}"></script>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
